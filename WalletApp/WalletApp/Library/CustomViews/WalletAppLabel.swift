@@ -1,5 +1,5 @@
 //
-//  MainScreenButton.swift
+//  WalletAppLabel.swift
 //  WalletApp
 //
 //  Created by Anastasia Golts on 27.12.2022.
@@ -7,14 +7,17 @@
 
 import UIKit
 
-final class MainScreenButton: UIButton {
+final class WalletAppLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setTitleColor(.white, for: .normal)
-        backgroundColor = .red
+        textColor = .black
+        textAlignment = .center
         layer.cornerRadius = 10
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.red.cgColor
     }
     
     required init?(coder: NSCoder) {

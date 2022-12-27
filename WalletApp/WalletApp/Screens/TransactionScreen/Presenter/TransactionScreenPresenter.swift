@@ -27,4 +27,12 @@ extension TransactionScreenPresenter: TransactionScreenViewOutput {
     func returnToMainScreen() {
         output.returnToMainModule()
     }
+    
+    func getAmountOfMoney(amount: Double) {
+        
+    }
+    
+    func getTransactionType(type: TransactionType) {
+        
+    }
 }

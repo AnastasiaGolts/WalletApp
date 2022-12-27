@@ -14,12 +14,12 @@ final class MainScreenViewController: UIViewController {
     var output: MainScreenViewOutput?
     
     private let balanceStackView = UIStackView()
-    private let balanceLabel = MainScreenLabel()
-    private let balanceButton = MainScreenButton()
+    private let balanceLabel = WalletAppLabel()
+    private let balanceButton = WalletAppButton()
     
     private let bitcoinTransactionStackView = UIStackView()
-    private let bitcoinTransactionLabel = MainScreenLabel()
-    private let bitcoinTransactionButton = MainScreenButton()
+    private let bitcoinTransactionLabel = WalletAppLabel()
+    private let bitcoinTransactionButton = WalletAppButton()
     
     private let tableView = UITableView()
     
@@ -34,7 +34,7 @@ final class MainScreenViewController: UIViewController {
         title = "WalletApp"
         view.backgroundColor = .white
         
-        setUpUI()
+        setUpAppearance()
     }
 
 }
@@ -47,7 +47,7 @@ extension MainScreenViewController: MainScreenViewInput {
 
 private extension MainScreenViewController {
     
-    func setUpUI() {
+    func setUpAppearance() {
         setUpBalanceLabel()
         setUpBalanceButton()
         setUpBalanceStackView()
@@ -167,5 +167,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TransactionType {
+enum TransactionType: CaseIterable {
     case groceries
     case taxi
     case restaurants

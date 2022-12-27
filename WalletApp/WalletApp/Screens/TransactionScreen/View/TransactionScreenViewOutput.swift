@@ -9,4 +9,6 @@ import Foundation
  
 protocol TransactionScreenViewOutput: AnyObject {
     func returnToMainScreen()
+    func getAmountOfMoney(amount: Double)
+    func getTransactionType(type: TransactionType)
 }
