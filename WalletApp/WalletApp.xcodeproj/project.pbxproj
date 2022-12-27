@@ -42,6 +42,11 @@
 		354F9F05295B11A600A8833B /* AddMoneyViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F04295B11A600A8833B /* AddMoneyViewOutput.swift */; };
 		354F9F07295B11AF00A8833B /* AddMoneyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F06295B11AF00A8833B /* AddMoneyPresenter.swift */; };
 		354F9F09295B11B800A8833B /* AddMoneyModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F08295B11B800A8833B /* AddMoneyModuleOutput.swift */; };
+		354F9F0D295B350500A8833B /* MainScreenLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F0C295B350500A8833B /* MainScreenLabel.swift */; };
+		354F9F0F295B35FF00A8833B /* MainScreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F0E295B35FF00A8833B /* MainScreenButton.swift */; };
+		354F9F13295B3C8100A8833B /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F12295B3C8100A8833B /* TransactionModel.swift */; };
+		354F9F16295B3CCE00A8833B /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F15295B3CCE00A8833B /* TransactionType.swift */; };
+		354F9F19295B3D6A00A8833B /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F18295B3D6A00A8833B /* TransactionCell.swift */; };
 		364F1E850AB69BCA1A3ACDCD /* Pods_WalletApp_WalletAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEE2BE60CCF2FC093276126 /* Pods_WalletApp_WalletAppUITests.framework */; };
 		7AE319D213E36B70CFAF8B01 /* Pods_WalletApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6DA42420733F359E44939B /* Pods_WalletApp.framework */; };
 		B7026191DB45A1AFBC839A4D /* Pods_WalletAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38F28ACA3D816B9C395A758 /* Pods_WalletAppTests.framework */; };
@@ -106,6 +111,11 @@
 		354F9F04295B11A600A8833B /* AddMoneyViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyViewOutput.swift; sourceTree = "<group>"; };
 		354F9F06295B11AF00A8833B /* AddMoneyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyPresenter.swift; sourceTree = "<group>"; };
 		354F9F08295B11B800A8833B /* AddMoneyModuleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyModuleOutput.swift; sourceTree = "<group>"; };
+		354F9F0C295B350500A8833B /* MainScreenLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenLabel.swift; sourceTree = "<group>"; };
+		354F9F0E295B35FF00A8833B /* MainScreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenButton.swift; sourceTree = "<group>"; };
+		354F9F12295B3C8100A8833B /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		354F9F15295B3CCE00A8833B /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		354F9F18295B3D6A00A8833B /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		64B7F47C66BB07EA0549213F /* Pods-WalletAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WalletAppTests/Pods-WalletAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A8BF528D553703122E2D67C /* Pods-WalletApp-WalletAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletApp-WalletAppUITests.release.xcconfig"; path = "Target Support Files/Pods-WalletApp-WalletAppUITests/Pods-WalletApp-WalletAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ADEE2BE60CCF2FC093276126 /* Pods_WalletApp_WalletAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalletApp_WalletAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +182,7 @@
 				354F9EC1295AC65B00A8833B /* Coordinators */,
 				354F9EF5295AFC3800A8833B /* Factories */,
 				354F9EBD295AC1F600A8833B /* Screens */,
+				354F9F0A295B34E200A8833B /* Library */,
 				354F9EAF295ABF0900A8833B /* Resources */,
 				354F9EAC295ABECB00A8833B /* Sevrices */,
 			);
@@ -284,7 +295,6 @@
 			children = (
 				354F9EC9295ADF6200A8833B /* View */,
 				354F9ECA295ADF6900A8833B /* Presenter */,
-				354F9ECB295ADF7200A8833B /* Model */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -302,6 +312,7 @@
 		354F9EC9295ADF6200A8833B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				354F9F17295B3D5500A8833B /* TransactionCell */,
 				354F9EBF295AC33200A8833B /* MainScreenViewController.swift */,
 				354F9EE6295AEDBE00A8833B /* MainScreenViewInput.swift */,
 				354F9EE8295AEDCE00A8833B /* MainScreenViewOutput.swift */,
@@ -318,19 +329,11 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		354F9ECB295ADF7200A8833B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		354F9ECD295ADF8F00A8833B /* TransactionScreen */ = {
 			isa = PBXGroup;
 			children = (
 				354F9ECE295ADFA200A8833B /* View */,
 				354F9ECF295ADFA800A8833B /* Presenter */,
-				354F9ED1295ADFB800A8833B /* Model */,
 			);
 			path = TransactionScreen;
 			sourceTree = "<group>";
@@ -352,13 +355,6 @@
 				354F9EF0295AEF3500A8833B /* TransactionScreenModuleOutput.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		354F9ED1295ADFB800A8833B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		354F9ED2295ADFD100A8833B /* DataBaseProtocol */ = {
@@ -407,7 +403,6 @@
 			children = (
 				354F9EFD295B114600A8833B /* View */,
 				354F9EFE295B114C00A8833B /* Presenter */,
-				354F9EFF295B115900A8833B /* Model */,
 			);
 			path = AddMoneyScreen;
 			sourceTree = "<group>";
@@ -431,11 +426,47 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		354F9EFF295B115900A8833B /* Model */ = {
+		354F9F0A295B34E200A8833B /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				354F9F0B295B34F500A8833B /* CustomViews */,
+				354F9F14295B3CBB00A8833B /* Enums */,
+				354F9F11295B3C5B00A8833B /* Models */,
 			);
-			path = Model;
+			path = Library;
+			sourceTree = "<group>";
+		};
+		354F9F0B295B34F500A8833B /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				354F9F0C295B350500A8833B /* MainScreenLabel.swift */,
+				354F9F0E295B35FF00A8833B /* MainScreenButton.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		354F9F11295B3C5B00A8833B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				354F9F12295B3C8100A8833B /* TransactionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		354F9F14295B3CBB00A8833B /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				354F9F15295B3CCE00A8833B /* TransactionType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		354F9F17295B3D5500A8833B /* TransactionCell */ = {
+			isa = PBXGroup;
+			children = (
+				354F9F18295B3D6A00A8833B /* TransactionCell.swift */,
+			);
+			path = TransactionCell;
 			sourceTree = "<group>";
 		};
 		49CDCFA277EB572180E433F1 /* Frameworks */ = {
@@ -685,12 +716,14 @@
 			files = (
 				354F9EE3295AE68200A8833B /* CoreDataService.swift in Sources */,
 				354F9E83295ABE4100A8833B /* WalletApp.xcdatamodeld in Sources */,
+				354F9F19295B3D6A00A8833B /* TransactionCell.swift in Sources */,
 				354F9F05295B11A600A8833B /* AddMoneyViewOutput.swift in Sources */,
 				354F9EF4295AF3E200A8833B /* CoordinatorProtocol.swift in Sources */,
 				354F9EE7295AEDBE00A8833B /* MainScreenViewInput.swift in Sources */,
 				354F9ED7295AE01E00A8833B /* MainScreenModuleOutput.swift in Sources */,
 				354F9ED5295AE00A00A8833B /* MainScreenPresenter.swift in Sources */,
 				354F9EEF295AEEC200A8833B /* TransactionScreenViewOutput.swift in Sources */,
+				354F9F13295B3C8100A8833B /* TransactionModel.swift in Sources */,
 				354F9EE5295AE6B000A8833B /* NetworkService.swift in Sources */,
 				354F9EC0295AC33200A8833B /* MainScreenViewController.swift in Sources */,
 				354F9EE1295AE55200A8833B /* NetworkServiceProtocol.swift in Sources */,
@@ -703,6 +736,7 @@
 				354F9E79295ABE4000A8833B /* AppDelegate.swift in Sources */,
 				354F9EE9295AEDCE00A8833B /* MainScreenViewOutput.swift in Sources */,
 				354F9EF8295AFC5200A8833B /* MainFlowFactory.swift in Sources */,
+				354F9F0F295B35FF00A8833B /* MainScreenButton.swift in Sources */,
 				354F9EBB295ABFD400A8833B /* Strings.swift in Sources */,
 				354F9EC8295AC6CE00A8833B /* MainFlowCoordinator.swift in Sources */,
 				354F9EF1295AEF3500A8833B /* TransactionScreenModuleOutput.swift in Sources */,
@@ -710,7 +744,9 @@
 				354F9EB3295ABF3800A8833B /* Constants.swift in Sources */,
 				354F9EDF295AE53A00A8833B /* DataBaseProtocol.swift in Sources */,
 				354F9EDD295AE07F00A8833B /* TransactionScreenPresenter.swift in Sources */,
+				354F9F0D295B350500A8833B /* MainScreenLabel.swift in Sources */,
 				354F9EED295AEEB000A8833B /* TransactionScreenViewInput.swift in Sources */,
+				354F9F16295B3CCE00A8833B /* TransactionType.swift in Sources */,
 				354F9EC3295AC66D00A8833B /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
