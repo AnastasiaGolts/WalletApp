@@ -23,6 +23,8 @@ final class ApplicationCoordinator {
         self.networkService = NetworkService()
         self.dataBase = CoreDataService()
         
+        //dataBase.populateDataBase()
+        
         self.window = window
         self.navigationController = UINavigationController()
         

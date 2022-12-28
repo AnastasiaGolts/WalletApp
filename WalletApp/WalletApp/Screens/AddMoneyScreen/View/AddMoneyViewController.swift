@@ -59,9 +59,9 @@ private extension AddMoneyViewController {
     }
     
     func setUpStackView() {
-        stackView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth - 60, height: 150)
+        stackView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth - 60, height: 100)
         stackView.center.x = view.center.x
-        stackView.center.y = view.center.y
+        stackView.center.y = view.center.y - 50
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = 10

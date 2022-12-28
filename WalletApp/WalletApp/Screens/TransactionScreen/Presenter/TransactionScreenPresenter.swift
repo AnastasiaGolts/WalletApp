@@ -38,7 +38,10 @@ extension TransactionScreenPresenter: TransactionScreenViewOutput {
             return
         }
         
-        let transactionModel = TransactionModel(dateOfTransaction: Date(), amount: receivedAmount, transactionType: receivedTransactionType.title)
+        let transactionModel = TransactionModel(dayOfTransaction: WalletAppDateFormatter.setDateTime().date,
+                                                timeOfTransaction: WalletAppDateFormatter.setDateTime().time,
+                                                amount: receivedAmount,
+                                                transactionType: receivedTransactionType.title)
         dataBaseService.addTransaction(transactionModel: transactionModel)
         output.returnToMainModule()
     }

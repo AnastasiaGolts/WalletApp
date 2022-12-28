@@ -33,7 +33,9 @@ extension AddMoneyPresenter: AddMoneyViewOutput {
             view?.showEmptyAlert()
             return
         }
-        let transactionModel = TransactionModel(dateOfTransaction: Date(),
+        
+        let transactionModel = TransactionModel(dayOfTransaction: WalletAppDateFormatter.setDateTime().date,
+                                                timeOfTransaction: WalletAppDateFormatter.setDateTime().time,
                                                 amount: amount,
                                                 transactionType: "Added money")
         dataBase.addTransaction(transactionModel: transactionModel)

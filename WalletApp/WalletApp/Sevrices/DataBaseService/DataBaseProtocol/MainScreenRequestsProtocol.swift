@@ -8,6 +8,9 @@
 import Foundation
 
 protocol MainScreenRequestsProtocol: AnyObject {
-    var isPaginating: Bool { get set }
-    func fetchData(pagination: Bool, completion: @escaping (Result<[TransactionModel], Error>) -> Void)
+    func fetchData(completion: @escaping (Result<[TransactionModel], Error>) -> Void)
+    func getNumberOfSections() -> Int
+    func getNumberOfRowsInSection(section: Int) -> Int
+    func getCellInfo(indexPath: IndexPath) -> TransactionModel
+    func getSectionName(section: Int) -> String
 }

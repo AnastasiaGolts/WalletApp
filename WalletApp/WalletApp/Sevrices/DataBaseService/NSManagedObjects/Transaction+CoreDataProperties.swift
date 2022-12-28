@@ -16,8 +16,9 @@ extension Transaction {
         return NSFetchRequest<Transaction>(entityName: "Transaction")
     }
 
-    @NSManaged public var dateOfTransaction: Date?
     @NSManaged public var amount: Double
     @NSManaged public var type: String?
+    @NSManaged public var dayOfTransaction: String?
+    @NSManaged public var timeOfTransaction: String?
 
 }

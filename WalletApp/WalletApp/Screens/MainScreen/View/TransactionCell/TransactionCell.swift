@@ -34,13 +34,17 @@ final class TransactionCell: UITableViewCell {
     }
     
     func setUpCell(transactionModel: TransactionModel) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let date = dateFormatter.string(from: transactionModel.dateOfTransaction ?? Date())
+        let date = transactionModel.timeOfTransaction.dropLast(3)
         let amount = transactionModel.amount
         
-        amountLabel.text = "\(amount)$"
-        transactionTypeLabel.text = "\(date) " + transactionModel.transactionType
+        if transactionModel.transactionType == "Added money" {
+            amountLabel.text = "+\(amount)$"
+            amountLabel.textColor = .red
+        } else {
+            amountLabel.text = "-\(amount)$"
+            amountLabel.textColor = .black
+        }
+        transactionTypeLabel.text = transactionModel.transactionType + "  \(date)"
     }
 }
 

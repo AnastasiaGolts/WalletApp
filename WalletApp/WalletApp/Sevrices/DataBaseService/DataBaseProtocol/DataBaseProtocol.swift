@@ -8,5 +8,6 @@
 import Foundation
 
 protocol DataBaseProtocol: AnyObject {
-
+    func populateDataBase()
+    func emptyDataBase()
 }

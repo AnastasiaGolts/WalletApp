@@ -35,11 +35,9 @@ extension MainScreenPresenter: MainScreenViewOutput {
         output.showAddMoneyModule()
     }
     
-    func fetchTransactionData(pagination: Bool) -> [TransactionModel] {
-        guard !dataBaseService.isPaginating else {
-            return [TransactionModel]()
-        }
-        dataBaseService.fetchData(pagination: pagination) { result in
+    func fetchTransactionData() -> [TransactionModel] {
+
+        dataBaseService.fetchData { result in
             switch result {
             case .success(let array):
                 self.array = array
@@ -48,5 +46,21 @@ extension MainScreenPresenter: MainScreenViewOutput {
             }
         }
         return array
+    }
+    
+    func getNumberOfSections() -> Int {
+        return dataBaseService.getNumberOfSections()
+    }
+    
+    func getNumberOfRowsInSection(section: Int) -> Int {
+        return dataBaseService.getNumberOfRowsInSection(section: section)
+    }
+    
+    func getCellInfo(indexPath: IndexPath) -> TransactionModel {
+        return dataBaseService.getCellInfo(indexPath: indexPath)
+    }
+    
+    func getSectionName(section: Int) -> String {
+        return dataBaseService.getSectionName(section: section)
     }
 }

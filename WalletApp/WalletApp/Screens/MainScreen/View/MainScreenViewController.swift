@@ -36,9 +36,15 @@ final class MainScreenViewController: UIViewController {
         title = "WalletApp"
         view.backgroundColor = .white
         
-        arrayOfTransactions = output?.fetchTransactionData(pagination: false) ?? [TransactionModel]()
-        
         setUpAppearance()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        arrayOfTransactions = output?.fetchTransactionData() ?? [TransactionModel]()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 
 }
@@ -155,35 +161,34 @@ private extension MainScreenViewController {
 // MARK: - TableView Delegate & DataSource
 
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return output?.getNumberOfSections() ?? 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfTransactions.count
+        return output?.getNumberOfRowsInSection(section: section) ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let title = output?.getSectionName(section: section) else {
+            return ""
+        }
+        return title
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionCell.identifier, for: indexPath) as? TransactionCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionCell.identifier, for: indexPath) as? TransactionCell,
+              let transactionModel = output?.getCellInfo(indexPath: indexPath) else {
             return UITableViewCell()
         }
         
-        cell.setUpCell(transactionModel: arrayOfTransactions[indexPath.row])
+        cell.setUpCell(transactionModel: transactionModel)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
-    }
-}
-
-// MARK: - UIScriollViewDelegate
-
-extension MainScreenViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
-            arrayOfTransactions.append(contentsOf: output?.fetchTransactionData(pagination: true) ?? [TransactionModel]())
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
-            }
-        }
     }
 }
