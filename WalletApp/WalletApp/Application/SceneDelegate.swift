@@ -23,6 +23,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
 
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        let previousVisitTime = UserDefaults.standard.getTimeOfLastVisit()
+        if previousVisitTime != nil {
+            if let previousVisitTime = previousVisitTime {
+                let minutes = Date().minutes(from: previousVisitTime)
+                if minutes > 59 {
+                    UserDefaults.standard.setValueShouldUpdateBitcoin(value: true)
+                    UserDefaults.standard.setTimeOfLastVisit(date: Date())
+                } else {
+                    UserDefaults.standard.setValueShouldUpdateBitcoin(value: false)
+                }
+            }
+        } else {
+            UserDefaults.standard.setTimeOfLastVisit(date: Date())
+            UserDefaults.standard.setValueShouldUpdateBitcoin(value: true)
+        }
+    }
 
 }
 

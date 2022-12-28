@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NetworkServiceProtocol: AnyObject {
-    
+    func fetchBitcoinPrice() async throws -> Float
 }

@@ -30,4 +30,24 @@ extension UserDefaults {
     func isFirstVisit() -> Bool? {
         return UserDefaults.standard.value(forKey: "IsVisited") as? Bool
     }
+    
+    // MARK: - Bitcoin
+    
+    func setTimeOfLastVisit(date: Date) {
+        UserDefaults.standard.setValue(date, forKey: "DateOfVisit")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func getTimeOfLastVisit() -> Date? {
+        return UserDefaults.standard.value(forKey: "DateOfVisit") as? Date
+    }
+    
+    func setValueShouldUpdateBitcoin(value: Bool) {
+        UserDefaults.standard.setValue(value, forKey: "ShouldUpdate")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func getValueShouldUpdateBitcoin() -> Bool? {
+        return UserDefaults.standard.value(forKey: "ShouldUpdate") as? Bool
+    }
 }

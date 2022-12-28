@@ -24,7 +24,7 @@ final class MainScreenViewController: UIViewController {
     private let tableView = UITableView()
     
     private let stackViewHeight = Constants.screenHeight * 0.75
-    private let stackViewSideConstant = (Constants.screenWidth / 2) + 10
+    private let stackViewSideConstant = (Constants.screenWidth / 2) + 7
     
     private var arrayOfTransactions = [TransactionModel]()
     
@@ -41,15 +41,11 @@ final class MainScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        arrayOfTransactions = output?.fetchTransactionData() ?? [TransactionModel]()
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
         
-        guard let text = output?.getBalanceInfo() else {
-            return
-        }
-        balanceLabel.text = text
+        fetchAllData()
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 
 }
@@ -62,12 +58,31 @@ extension MainScreenViewController: MainScreenViewInput {
 
 private extension MainScreenViewController {
     
+    // MARK: - Set Up Appearance
+    
+    func fetchAllData() {
+        arrayOfTransactions = output?.fetchTransactionData() ?? [TransactionModel]()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+        
+        guard let balanceInfo = output?.getBalanceInfo() else {
+            return
+        }
+        balanceLabel.text = balanceInfo
+        
+        
+        Task { [weak self] in
+            let bitcoinPrice = await self?.output?.getBitcoinPrice()
+            bitcoinTransactionLabel.text = bitcoinPrice
+        }
+    }
+    
     func setUpAppearance() {
-        //setUpBalanceLabel()
         setUpBalanceButton()
         setUpBalanceStackView()
         
-        setUpBitcoinTransactionLabel()
         setUpBitcoinTransactionButton()
         setUpBitcoinTransactionStackView()
         
@@ -75,10 +90,6 @@ private extension MainScreenViewController {
     }
     
     // MARK: - Set Up BalanceStackView
-    
-//    func setUpBalanceLabel() {
-//        balanceLabel.text = "My balance"
-//    }
     
     func setUpBalanceButton() {
         balanceButton.setTitle("Add money", for: .normal)
@@ -98,17 +109,13 @@ private extension MainScreenViewController {
        
         var constraints = [NSLayoutConstraint]()
         constraints.append(balanceStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))
-        constraints.append(balanceStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20))
+        constraints.append(balanceStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15))
         constraints.append(balanceStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -stackViewSideConstant))
         constraints.append(balanceStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -stackViewHeight))
         NSLayoutConstraint.activate(constraints)
     }
     
     // MARK: - Set Up BitcoinTransactionStackView
-    
-    func setUpBitcoinTransactionLabel() {
-        bitcoinTransactionLabel.text = "Bitcoin"
-    }
     
     func setUpBitcoinTransactionButton() {
         bitcoinTransactionButton.setTitle("Add transaction", for: .normal)
@@ -129,7 +136,7 @@ private extension MainScreenViewController {
         var constraints = [NSLayoutConstraint]()
         constraints.append(bitcoinTransactionStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))
         constraints.append(bitcoinTransactionStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: stackViewSideConstant))
-        constraints.append(bitcoinTransactionStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20))
+        constraints.append(bitcoinTransactionStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15))
         constraints.append(bitcoinTransactionStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -stackViewHeight))
         NSLayoutConstraint.activate(constraints)
     }

@@ -19,6 +19,8 @@ final class MainScreenPresenter {
     
     private var array = [TransactionModel]()
     
+    private var price = String()
+    
     init(output: MainScreenModuleOutput, networkService: NetworkServiceProtocol, dataBaseService: MainScreenRequestsProtocol) {
         self.networkService = networkService
         self.dataBaseService = dataBaseService
@@ -50,6 +52,8 @@ extension MainScreenPresenter: MainScreenViewOutput {
         return array
     }
     
+    // MARK: - TableViewData
+    
     func getNumberOfSections() -> Int {
         return dataBaseService.getNumberOfSections()
     }
@@ -66,11 +70,37 @@ extension MainScreenPresenter: MainScreenViewOutput {
         return dataBaseService.getSectionName(section: section)
     }
     
+    // MARK: - Labels Data
+    
     func getBalanceInfo() -> String {
         guard let value = UserDefaults.standard.getValueForBalance() else {
             return ""
         }
         let string = String(format: "%.2f", value)
-        return string  + "$"
+        return "Balance: " + string
     }
+    
+    func getBitcoinPrice() async -> String {
+        
+        guard let shouldUpdate = UserDefaults.standard.getValueShouldUpdateBitcoin() else {
+            return String()
+        }
+
+        if shouldUpdate  {
+            do {
+                let floatPrice = try await networkService.fetchBitcoinPrice()
+                price = String(format: "%.1f", floatPrice)
+            } catch {
+                
+            }
+        } else {
+            guard let value = UserDefaults.standard.getValueForBalance() else {
+                return String()
+            }
+            price = String(format: "%.1f", value)
+        }
+        
+        return "Bitcoin: " + price + "$"
+    }
+
 }

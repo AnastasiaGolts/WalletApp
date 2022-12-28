@@ -16,4 +16,5 @@ protocol MainScreenViewOutput: AnyObject {
     func getCellInfo(indexPath: IndexPath) -> TransactionModel
     func getSectionName(section: Int) -> String
     func getBalanceInfo() -> String
+    func getBitcoinPrice() async -> String
 }
