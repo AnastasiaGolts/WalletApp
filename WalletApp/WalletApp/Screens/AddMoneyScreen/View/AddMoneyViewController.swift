@@ -13,16 +13,65 @@ final class AddMoneyViewController: UIViewController {
     
     var output: AddMoneyViewOutput?
     
+    private let textField = WalletAppTextField()
+    private let button = WalletAppButton()
+    private let stackView = UIStackView()
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @objc func returnToMain() {
-        output?.returnToMainScreen()
+        view.backgroundColor = .white
+        
+        setUpAppearance()
     }
     
 }
 
+// MARK: - AddMoneyViewInput
+
 extension AddMoneyViewController: AddMoneyViewInput {
+    func showEmptyAlert() {
+        WalletAppAlert.showAlert(type: .emptyAdd, on: self)
+    }
+}
+
+private extension AddMoneyViewController {
     
+    // MARK: - Set Up Appearance
+    
+    func setUpAppearance() {
+        setUpTextField()
+        setUpButton()
+        setUpStackView()
+    }
+    
+    func setUpTextField() {
+        textField.placeholder = "Type here"
+        textField.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+    }
+    
+    func setUpButton() {
+        button.setTitle("Add money", for: .normal)
+        button.addTarget(self, action: #selector(submit), for: .touchUpInside)
+    }
+    
+    func setUpStackView() {
+        stackView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth - 60, height: 150)
+        stackView.center.x = view.center.x
+        stackView.center.y = view.center.y
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
+        [textField, button].forEach {
+            stackView.addArrangedSubview($0)
+        }
+        view.addSubview(stackView)
+    }
+    
+    // MARK: - Actions
+    
+    @objc func submit() {
+        output?.returnToMainScreen()
+    }
 }

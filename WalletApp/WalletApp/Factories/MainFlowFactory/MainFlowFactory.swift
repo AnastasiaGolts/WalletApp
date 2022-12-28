@@ -34,12 +34,12 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
     
     func showAddMoneyView(moduleOutput: AddMoneyModuleOutput, dataBaseService: DataBaseProtocol) -> AddMoneyViewController {
         
-        let viewController = AddMoneyViewController()
         let presenter = AddMoneyPresenter(output: moduleOutput, dataBase: dataBaseService)
+        let viewController = AddMoneyViewController()
 
         presenter.view = viewController
         viewController.output = presenter
         
-        return AddMoneyViewController()
+        return viewController
     }
 }

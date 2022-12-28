@@ -26,7 +26,9 @@ private extension WalletAppAlert {
         case .emptyAmount:
             return ("How much did you spend?", "Please specify amount of spent money")
         case .emptyTransactionType:
-            return ("Where did you spent your money?", "Please choose category")
+            return ("What did you spent your money on?", "Please choose category")
+        case .emptyAdd:
+            return ("How much do you want to add?", "Please specify amount of money")
         }
     }
 }

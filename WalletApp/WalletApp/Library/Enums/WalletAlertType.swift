@@ -10,4 +10,5 @@ import Foundation
 enum WalletAlertType {
     case emptyAmount
     case emptyTransactionType
+    case emptyAdd
 }

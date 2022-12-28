@@ -16,6 +16,8 @@ final class AddMoneyPresenter {
     private let output: AddMoneyModuleOutput
     private let dataBase: DataBaseProtocol
     
+    private var receivedAmount = ""
+    
     init(output: AddMoneyModuleOutput, dataBase: DataBaseProtocol) {
         self.output = output
         self.dataBase = dataBase
@@ -23,8 +25,18 @@ final class AddMoneyPresenter {
     
 }
 
+// MARK: - AddMoneyViewOutput
+
 extension AddMoneyPresenter: AddMoneyViewOutput {
     func returnToMainScreen() {
+        guard Double(receivedAmount) != nil else {
+            view?.showEmptyAlert()
+            return
+        }
         output.returnToMain()
+    }
+    
+    func getAmountOfMoney(amount: String?) {
+        receivedAmount = amount ?? ""
     }
 }

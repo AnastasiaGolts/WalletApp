@@ -445,10 +445,10 @@
 		354F9F0B295B34F500A8833B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				354F9F0C295B350500A8833B /* WalletAppLabel.swift */,
-				354F9F0E295B35FF00A8833B /* WalletAppButton.swift */,
-				354F9F1A295B54BF00A8833B /* WalletAppTextField.swift */,
 				354F9F1C295BED0000A8833B /* WalletAppAlert.swift */,
+				354F9F0E295B35FF00A8833B /* WalletAppButton.swift */,
+				354F9F0C295B350500A8833B /* WalletAppLabel.swift */,
+				354F9F1A295B54BF00A8833B /* WalletAppTextField.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";

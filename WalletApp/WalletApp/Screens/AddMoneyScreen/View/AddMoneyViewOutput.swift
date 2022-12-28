@@ -9,4 +9,5 @@ import Foundation
 
 protocol AddMoneyViewOutput: AnyObject {
     func returnToMainScreen()
+    func getAmountOfMoney(amount: String?)
 }
