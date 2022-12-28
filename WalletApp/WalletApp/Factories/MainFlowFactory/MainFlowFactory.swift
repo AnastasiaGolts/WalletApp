@@ -22,7 +22,7 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
     }
     
     func showTransactionScreen(moduleOutput: TransactionScreenModuleOutput,
-                               dataBaseService: DataBaseProtocol) -> TransactionScreenViewController {
+                               dataBaseService: AddTransactionProtocol) -> TransactionScreenViewController {
         let presenter = TransactionScreenPresenter(output: moduleOutput, dataBaseService: dataBaseService)
         let viewController = TransactionScreenViewController()
         
@@ -32,7 +32,7 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
         return viewController
     }
     
-    func showAddMoneyView(moduleOutput: AddMoneyModuleOutput, dataBaseService: DataBaseProtocol) -> AddMoneyViewController {
+    func showAddMoneyView(moduleOutput: AddMoneyModuleOutput, dataBaseService: AddTransactionProtocol) -> AddMoneyViewController {
         
         let presenter = AddMoneyPresenter(output: moduleOutput, dataBase: dataBaseService)
         let viewController = AddMoneyViewController()

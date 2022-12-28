@@ -66,11 +66,17 @@ extension MainFlowCoordinator {
     }
     
     func showTransactionScreen() {
+        guard let dataBase = dataBase as? AddTransactionProtocol else {
+            return
+        }
         let transactionScreen = mainFlowFactory.showTransactionScreen(moduleOutput: self, dataBaseService: dataBase)
         navigationController.pushViewController(transactionScreen, animated: true)
     }
     
     func showAddMoneyScreen() {
+        guard let dataBase = dataBase as? AddTransactionProtocol else {
+            return
+        }
         let addMoneyScreen = mainFlowFactory.showAddMoneyView(moduleOutput: self, dataBaseService: dataBase)
         navigationController.pushViewController(addMoneyScreen, animated: true)
     }

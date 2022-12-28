@@ -36,7 +36,7 @@ final class TransactionCell: UITableViewCell {
     func setUpCell(transactionModel: TransactionModel) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let date = dateFormatter.string(from: transactionModel.date)
+        let date = dateFormatter.string(from: transactionModel.dateOfTransaction ?? Date())
         let amount = transactionModel.amount
         
         amountLabel.text = "\(amount)$"

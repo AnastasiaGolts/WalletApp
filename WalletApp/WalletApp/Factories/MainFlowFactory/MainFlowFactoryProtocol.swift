@@ -12,6 +12,6 @@ protocol MainFlowFactoryProtocol: AnyObject {
                         networkService: NetworkServiceProtocol,
                         dataBaseService: MainScreenRequestsProtocol) -> MainScreenViewController
     func showTransactionScreen(moduleOutput: TransactionScreenModuleOutput,
-                               dataBaseService: DataBaseProtocol) -> TransactionScreenViewController
-    func showAddMoneyView(moduleOutput: AddMoneyModuleOutput, dataBaseService: DataBaseProtocol) -> AddMoneyViewController
+                               dataBaseService: AddTransactionProtocol) -> TransactionScreenViewController
+    func showAddMoneyView(moduleOutput: AddMoneyModuleOutput, dataBaseService: AddTransactionProtocol) -> AddMoneyViewController
 }

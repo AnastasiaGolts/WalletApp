@@ -8,7 +8,7 @@
 import Foundation
 
 struct TransactionModel {
-    let date: Date
+    let dateOfTransaction: Date?
     let amount: Double
     let transactionType: String
 }

@@ -14,11 +14,11 @@ final class AddMoneyPresenter {
     weak var view: AddMoneyViewInput?
     
     private let output: AddMoneyModuleOutput
-    private let dataBase: DataBaseProtocol
+    private let dataBase: AddTransactionProtocol
     
     private var receivedAmount = ""
     
-    init(output: AddMoneyModuleOutput, dataBase: DataBaseProtocol) {
+    init(output: AddMoneyModuleOutput, dataBase: AddTransactionProtocol) {
         self.output = output
         self.dataBase = dataBase
     }
@@ -33,7 +33,10 @@ extension AddMoneyPresenter: AddMoneyViewOutput {
             view?.showEmptyAlert()
             return
         }
-        print(amount)
+        let transactionModel = TransactionModel(dateOfTransaction: Date(),
+                                                amount: amount,
+                                                transactionType: "Added money")
+        dataBase.addTransaction(transactionModel: transactionModel)
         output.returnToMain()
     }
     

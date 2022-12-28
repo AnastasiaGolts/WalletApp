@@ -14,12 +14,12 @@ final class TransactionScreenPresenter {
     weak var view: TransactionScreenViewInput?
     
     private let output: TransactionScreenModuleOutput
-    private let dataBaseService: DataBaseProtocol
+    private let dataBaseService: AddTransactionProtocol
     
     private var receivedAmount = ""
     private var receivedTransactionType: TransactionType = .notChosen
     
-    init(output: TransactionScreenModuleOutput, dataBaseService: DataBaseProtocol) {
+    init(output: TransactionScreenModuleOutput, dataBaseService: AddTransactionProtocol) {
         self.dataBaseService = dataBaseService
         self.output = output
     }
@@ -28,7 +28,7 @@ final class TransactionScreenPresenter {
 
 extension TransactionScreenPresenter: TransactionScreenViewOutput {
     func returnToMainScreen() {
-        guard Double(receivedAmount) != nil else {
+        guard let receivedAmount = Double(receivedAmount) else {
             view?.showEmptyAmountAlert()
             return
         }
@@ -38,6 +38,8 @@ extension TransactionScreenPresenter: TransactionScreenViewOutput {
             return
         }
         
+        let transactionModel = TransactionModel(dateOfTransaction: Date(), amount: receivedAmount, transactionType: receivedTransactionType.title)
+        dataBaseService.addTransaction(transactionModel: transactionModel)
         output.returnToMainModule()
     }
     
