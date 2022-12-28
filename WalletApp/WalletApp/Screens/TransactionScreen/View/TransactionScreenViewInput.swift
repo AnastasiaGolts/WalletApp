@@ -8,5 +8,6 @@
 import Foundation
 
 protocol TransactionScreenViewInput: AnyObject {
-    
+    func showEmptyAmountAlert()
+    func showEmptyTransactionTypeAlert()
 }

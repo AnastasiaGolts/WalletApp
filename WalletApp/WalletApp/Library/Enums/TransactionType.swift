@@ -8,6 +8,7 @@
 import Foundation
 
 enum TransactionType: CaseIterable {
+    case notChosen
     case groceries
     case taxi
     case restaurants
@@ -16,6 +17,8 @@ enum TransactionType: CaseIterable {
     
     var title: String {
         switch self {
+        case .notChosen:
+            return "Not chosen"
         case .groceries:
             return "Groceries"
         case .taxi:

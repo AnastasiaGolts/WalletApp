@@ -33,7 +33,13 @@ final class TransactionScreenViewController: UIViewController {
 // MARK: - TransactionScreenViewInput
 
 extension TransactionScreenViewController: TransactionScreenViewInput {
-
+    func showEmptyAmountAlert() {
+        WalletAppAlert.showAlert(type: .emptyAmount, on: self)
+    }
+    
+    func showEmptyTransactionTypeAlert() {
+        WalletAppAlert.showAlert(type: .emptyTransactionType, on: self)
+    }
 }
 
 private extension TransactionScreenViewController {
@@ -84,10 +90,7 @@ private extension TransactionScreenViewController {
     }
     
     @objc func getValue(_ textField: UITextField) {
-        guard let amount = Double(textField.text ?? "") else {
-            return
-        }
-        output?.getAmountOfMoney(amount: amount)
+        output?.getAmountOfMoney(amount: textField.text)
     }
 }
 

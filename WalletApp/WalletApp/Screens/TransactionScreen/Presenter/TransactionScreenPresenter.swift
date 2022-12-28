@@ -16,6 +16,9 @@ final class TransactionScreenPresenter {
     private let output: TransactionScreenModuleOutput
     private let dataBaseService: DataBaseProtocol
     
+    private var receivedAmount = ""
+    private var receivedTransactionType: TransactionType = .notChosen
+    
     init(output: TransactionScreenModuleOutput, dataBaseService: DataBaseProtocol) {
         self.dataBaseService = dataBaseService
         self.output = output
@@ -25,14 +28,24 @@ final class TransactionScreenPresenter {
 
 extension TransactionScreenPresenter: TransactionScreenViewOutput {
     func returnToMainScreen() {
+        guard Double(receivedAmount) != nil else {
+            view?.showEmptyAmountAlert()
+            return
+        }
+        
+        guard receivedTransactionType != .notChosen else {
+            view?.showEmptyTransactionTypeAlert()
+            return
+        }
+        
         output.returnToMainModule()
     }
     
-    func getAmountOfMoney(amount: Double) {
-        
+    func getAmountOfMoney(amount: String?) {
+        receivedAmount = amount ?? ""
     }
     
     func getTransactionType(type: TransactionType) {
-        
+        receivedTransactionType = type
     }
 }

@@ -48,6 +48,8 @@
 		354F9F16295B3CCE00A8833B /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F15295B3CCE00A8833B /* TransactionType.swift */; };
 		354F9F19295B3D6A00A8833B /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F18295B3D6A00A8833B /* TransactionCell.swift */; };
 		354F9F1B295B54BF00A8833B /* WalletAppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F1A295B54BF00A8833B /* WalletAppTextField.swift */; };
+		354F9F1D295BED0000A8833B /* WalletAppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F1C295BED0000A8833B /* WalletAppAlert.swift */; };
+		354F9F1F295BED6600A8833B /* WalletAlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F1E295BED6600A8833B /* WalletAlertType.swift */; };
 		364F1E850AB69BCA1A3ACDCD /* Pods_WalletApp_WalletAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEE2BE60CCF2FC093276126 /* Pods_WalletApp_WalletAppUITests.framework */; };
 		7AE319D213E36B70CFAF8B01 /* Pods_WalletApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6DA42420733F359E44939B /* Pods_WalletApp.framework */; };
 		B7026191DB45A1AFBC839A4D /* Pods_WalletAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38F28ACA3D816B9C395A758 /* Pods_WalletAppTests.framework */; };
@@ -118,6 +120,8 @@
 		354F9F15295B3CCE00A8833B /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		354F9F18295B3D6A00A8833B /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		354F9F1A295B54BF00A8833B /* WalletAppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAppTextField.swift; sourceTree = "<group>"; };
+		354F9F1C295BED0000A8833B /* WalletAppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAppAlert.swift; sourceTree = "<group>"; };
+		354F9F1E295BED6600A8833B /* WalletAlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAlertType.swift; sourceTree = "<group>"; };
 		64B7F47C66BB07EA0549213F /* Pods-WalletAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WalletAppTests/Pods-WalletAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A8BF528D553703122E2D67C /* Pods-WalletApp-WalletAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletApp-WalletAppUITests.release.xcconfig"; path = "Target Support Files/Pods-WalletApp-WalletAppUITests/Pods-WalletApp-WalletAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ADEE2BE60CCF2FC093276126 /* Pods_WalletApp_WalletAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalletApp_WalletAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -444,6 +448,7 @@
 				354F9F0C295B350500A8833B /* WalletAppLabel.swift */,
 				354F9F0E295B35FF00A8833B /* WalletAppButton.swift */,
 				354F9F1A295B54BF00A8833B /* WalletAppTextField.swift */,
+				354F9F1C295BED0000A8833B /* WalletAppAlert.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				354F9F15295B3CCE00A8833B /* TransactionType.swift */,
+				354F9F1E295BED6600A8833B /* WalletAlertType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -726,12 +732,14 @@
 				354F9ED7295AE01E00A8833B /* MainScreenModuleOutput.swift in Sources */,
 				354F9ED5295AE00A00A8833B /* MainScreenPresenter.swift in Sources */,
 				354F9EEF295AEEC200A8833B /* TransactionScreenViewOutput.swift in Sources */,
+				354F9F1D295BED0000A8833B /* WalletAppAlert.swift in Sources */,
 				354F9F13295B3C8100A8833B /* TransactionModel.swift in Sources */,
 				354F9EE5295AE6B000A8833B /* NetworkService.swift in Sources */,
 				354F9EC0295AC33200A8833B /* MainScreenViewController.swift in Sources */,
 				354F9EE1295AE55200A8833B /* NetworkServiceProtocol.swift in Sources */,
 				354F9F07295B11AF00A8833B /* AddMoneyPresenter.swift in Sources */,
 				354F9F03295B119D00A8833B /* AddMoneyViewInput.swift in Sources */,
+				354F9F1F295BED6600A8833B /* WalletAlertType.swift in Sources */,
 				354F9F01295B117300A8833B /* AddMoneyViewController.swift in Sources */,
 				354F9F09295B11B800A8833B /* AddMoneyModuleOutput.swift in Sources */,
 				354F9ED9295AE04D00A8833B /* TransactionScreenViewController.swift in Sources */,
