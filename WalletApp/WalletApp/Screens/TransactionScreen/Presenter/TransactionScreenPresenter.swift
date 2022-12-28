@@ -38,6 +38,12 @@ extension TransactionScreenPresenter: TransactionScreenViewOutput {
             return
         }
         
+        guard var value = UserDefaults.standard.getValueForBalance() else {
+            return
+        }
+        value -= receivedAmount
+        UserDefaults.standard.setValueForBalance(value: value)
+        
         let transactionModel = TransactionModel(dayOfTransaction: WalletAppDateFormatter.setDateTime().date,
                                                 timeOfTransaction: WalletAppDateFormatter.setDateTime().time,
                                                 amount: receivedAmount,

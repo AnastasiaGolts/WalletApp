@@ -15,4 +15,5 @@ protocol MainScreenViewOutput: AnyObject {
     func getNumberOfRowsInSection(section: Int) -> Int
     func getCellInfo(indexPath: IndexPath) -> TransactionModel
     func getSectionName(section: Int) -> String
+    func getBalanceInfo() -> String
 }

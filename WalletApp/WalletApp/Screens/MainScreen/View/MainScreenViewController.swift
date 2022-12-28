@@ -45,6 +45,11 @@ final class MainScreenViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
+        
+        guard let text = output?.getBalanceInfo() else {
+            return
+        }
+        balanceLabel.text = text
     }
 
 }
@@ -58,7 +63,7 @@ extension MainScreenViewController: MainScreenViewInput {
 private extension MainScreenViewController {
     
     func setUpAppearance() {
-        setUpBalanceLabel()
+        //setUpBalanceLabel()
         setUpBalanceButton()
         setUpBalanceStackView()
         
@@ -71,9 +76,9 @@ private extension MainScreenViewController {
     
     // MARK: - Set Up BalanceStackView
     
-    func setUpBalanceLabel() {
-        balanceLabel.text = "My balance"
-    }
+//    func setUpBalanceLabel() {
+//        balanceLabel.text = "My balance"
+//    }
     
     func setUpBalanceButton() {
         balanceButton.setTitle("Add money", for: .normal)

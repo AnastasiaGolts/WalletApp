@@ -34,6 +34,12 @@ extension AddMoneyPresenter: AddMoneyViewOutput {
             return
         }
         
+        guard var value = UserDefaults.standard.getValueForBalance() else {
+            return
+        }
+        value += amount
+        UserDefaults.standard.setValueForBalance(value: value)
+        
         let transactionModel = TransactionModel(dayOfTransaction: WalletAppDateFormatter.setDateTime().date,
                                                 timeOfTransaction: WalletAppDateFormatter.setDateTime().time,
                                                 amount: amount,

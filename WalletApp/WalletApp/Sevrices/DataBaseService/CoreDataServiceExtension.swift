@@ -23,6 +23,8 @@ extension CoreDataService {
         }
     }
     
+    // MARK: - PopulateDataBase
+    
     func populateDataBase() {
         let array = getModels()
 
@@ -34,6 +36,8 @@ extension CoreDataService {
             transaction.type = $0.transactionType
             coreDataStack.saveContext()
         }
+        
+        UserDefaults.standard.setValueForBalance(value: 100000.0)
     }
 }
 

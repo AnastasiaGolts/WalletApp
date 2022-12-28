@@ -26,6 +26,8 @@ final class MainScreenPresenter {
     }
 }
 
+// MARK: - MainScreenViewOutput
+
 extension MainScreenPresenter: MainScreenViewOutput {
     func showTransactionScreen() {
         output.showTransactionModule()
@@ -62,5 +64,13 @@ extension MainScreenPresenter: MainScreenViewOutput {
     
     func getSectionName(section: Int) -> String {
         return dataBaseService.getSectionName(section: section)
+    }
+    
+    func getBalanceInfo() -> String {
+        guard let value = UserDefaults.standard.getValueForBalance() else {
+            return ""
+        }
+        let string = String(format: "%.1f", value)
+        return string  + "$"
     }
 }

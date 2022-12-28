@@ -55,6 +55,7 @@
 		354F9F25295C412C00A8833B /* CoreDataServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F24295C412C00A8833B /* CoreDataServiceExtension.swift */; };
 		354F9F27295C5EE600A8833B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F26295C5EE600A8833B /* CoreDataStack.swift */; };
 		354F9F2A295C806900A8833B /* WalletAppDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F29295C806900A8833B /* WalletAppDateFormatter.swift */; };
+		354F9F2D295C957C00A8833B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354F9F2C295C957C00A8833B /* UserDefaults.swift */; };
 		364F1E850AB69BCA1A3ACDCD /* Pods_WalletApp_WalletAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADEE2BE60CCF2FC093276126 /* Pods_WalletApp_WalletAppUITests.framework */; };
 		7AE319D213E36B70CFAF8B01 /* Pods_WalletApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6DA42420733F359E44939B /* Pods_WalletApp.framework */; };
 		B7026191DB45A1AFBC839A4D /* Pods_WalletAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38F28ACA3D816B9C395A758 /* Pods_WalletAppTests.framework */; };
@@ -132,6 +133,7 @@
 		354F9F24295C412C00A8833B /* CoreDataServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceExtension.swift; sourceTree = "<group>"; };
 		354F9F26295C5EE600A8833B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		354F9F29295C806900A8833B /* WalletAppDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAppDateFormatter.swift; sourceTree = "<group>"; };
+		354F9F2C295C957C00A8833B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		64B7F47C66BB07EA0549213F /* Pods-WalletAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WalletAppTests/Pods-WalletAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A8BF528D553703122E2D67C /* Pods-WalletApp-WalletAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalletApp-WalletAppUITests.release.xcconfig"; path = "Target Support Files/Pods-WalletApp-WalletAppUITests/Pods-WalletApp-WalletAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ADEE2BE60CCF2FC093276126 /* Pods_WalletApp_WalletAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalletApp_WalletAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -451,6 +453,7 @@
 			children = (
 				354F9F0B295B34F500A8833B /* CustomViews */,
 				354F9F14295B3CBB00A8833B /* Enums */,
+				354F9F2B295C956A00A8833B /* Extensions */,
 				354F9F28295C805600A8833B /* Helpers */,
 				354F9F11295B3C5B00A8833B /* Models */,
 			);
@@ -499,6 +502,14 @@
 				354F9F29295C806900A8833B /* WalletAppDateFormatter.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		354F9F2B295C956A00A8833B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				354F9F2C295C957C00A8833B /* UserDefaults.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		49CDCFA277EB572180E433F1 /* Frameworks */ = {
@@ -747,6 +758,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				354F9EE3295AE68200A8833B /* CoreDataService.swift in Sources */,
+				354F9F2D295C957C00A8833B /* UserDefaults.swift in Sources */,
 				354F9E83295ABE4100A8833B /* WalletApp.xcdatamodeld in Sources */,
 				354F9F19295B3D6A00A8833B /* TransactionCell.swift in Sources */,
 				354F9F05295B11A600A8833B /* AddMoneyViewOutput.swift in Sources */,
