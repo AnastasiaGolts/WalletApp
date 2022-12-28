@@ -70,7 +70,7 @@ extension MainScreenPresenter: MainScreenViewOutput {
         guard let value = UserDefaults.standard.getValueForBalance() else {
             return ""
         }
-        let string = String(format: "%.1f", value)
+        let string = String(format: "%.2f", value)
         return string  + "$"
     }
 }

@@ -23,7 +23,10 @@ final class ApplicationCoordinator {
         self.networkService = NetworkService()
         self.dataBase = CoreDataService()
         
-        //dataBase.populateDataBase()
+        if UserDefaults.standard.isFirstVisit() == nil {
+            dataBase.populateDataBase()
+            UserDefaults.standard.markAsVisited(value: false)
+        }
         
         self.window = window
         self.navigationController = UINavigationController()
