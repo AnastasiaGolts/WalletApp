@@ -40,7 +40,7 @@ final class TransactionCell: UITableViewCell {
         let amount = transactionModel.amount
         
         amountLabel.text = "\(amount)$"
-        transactionTypeLabel.text = "\(date)   " + transactionModel.transactionType.title
+        transactionTypeLabel.text = "\(date) " + transactionModel.transactionType
     }
 }
 

@@ -13,6 +13,7 @@ final class WalletAppButton: UIButton {
         super.init(frame: frame)
         
         setTitleColor(.white, for: .normal)
+        setTitleColor(.lightGray, for: .highlighted)
         backgroundColor = .red
         layer.cornerRadius = 10
     }

@@ -10,7 +10,7 @@ import Foundation
 protocol MainFlowFactoryProtocol: AnyObject {
     func showMainScreen(moduleOutput: MainScreenModuleOutput,
                         networkService: NetworkServiceProtocol,
-                        dataBaseService: DataBaseProtocol) -> MainScreenViewController
+                        dataBaseService: MainScreenRequestsProtocol) -> MainScreenViewController
     func showTransactionScreen(moduleOutput: TransactionScreenModuleOutput,
                                dataBaseService: DataBaseProtocol) -> TransactionScreenViewController
     func showAddMoneyView(moduleOutput: AddMoneyModuleOutput, dataBaseService: DataBaseProtocol) -> AddMoneyViewController

@@ -47,8 +47,10 @@ private extension AddMoneyViewController {
     }
     
     func setUpTextField() {
+        textField.delegate = self
         textField.placeholder = "Type here"
         textField.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        textField.addTarget(self, action: #selector(getValue(_:)), for: .editingChanged)
     }
     
     func setUpButton() {
@@ -72,6 +74,18 @@ private extension AddMoneyViewController {
     // MARK: - Actions
     
     @objc func submit() {
-        output?.returnToMainScreen()
+        output?.submit()
+    }
+    
+    @objc func getValue(_ textField: UITextField) {
+        output?.getAmountOfMoney(amount: textField.text)
+    }
+}
+
+// MARK: - UITextField Delegate
+
+extension AddMoneyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }

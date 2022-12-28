@@ -11,7 +11,7 @@ import UIKit
 final class MainFlowFactory: MainFlowFactoryProtocol {
     func showMainScreen(moduleOutput: MainScreenModuleOutput,
                         networkService: NetworkServiceProtocol,
-                        dataBaseService: DataBaseProtocol) -> MainScreenViewController {
+                        dataBaseService: MainScreenRequestsProtocol) -> MainScreenViewController {
         let presenter = MainScreenPresenter(output: moduleOutput, networkService: networkService, dataBaseService: dataBaseService)
         let viewController = MainScreenViewController()
         

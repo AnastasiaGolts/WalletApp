@@ -8,6 +8,11 @@
 import Foundation
 import CoreData
 
-final class CoreDataService: DataBaseProtocol {
+final class CoreDataService: DataBaseProtocol, MainScreenRequestsProtocol {
     
+    var isPaginating = false
+    
+    func fetchData(pagination: Bool, completion: @escaping (Result<[TransactionModel], Error>) -> Void) {
+        
+    }
 }

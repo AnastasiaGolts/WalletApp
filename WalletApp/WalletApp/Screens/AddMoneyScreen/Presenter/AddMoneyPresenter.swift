@@ -28,11 +28,12 @@ final class AddMoneyPresenter {
 // MARK: - AddMoneyViewOutput
 
 extension AddMoneyPresenter: AddMoneyViewOutput {
-    func returnToMainScreen() {
-        guard Double(receivedAmount) != nil else {
+    func submit() {
+        guard let amount = Double(receivedAmount) else {
             view?.showEmptyAlert()
             return
         }
+        print(amount)
         output.returnToMain()
     }
     

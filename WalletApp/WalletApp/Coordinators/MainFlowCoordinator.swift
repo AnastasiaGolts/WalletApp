@@ -58,6 +58,9 @@ extension MainFlowCoordinator: AddMoneyModuleOutput {
 
 extension MainFlowCoordinator {
     func showMainScreen() {
+        guard let dataBase = dataBase as? MainScreenRequestsProtocol else {
+            return
+        }
         let mainScreen = mainFlowFactory.showMainScreen(moduleOutput: self, networkService: networkService, dataBaseService: dataBase)
         navigationController.viewControllers = [mainScreen]
     }

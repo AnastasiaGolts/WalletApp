@@ -10,4 +10,5 @@ import Foundation
 protocol MainScreenViewOutput: AnyObject {
     func showTransactionScreen()
     func showAddMoneyScreen()
+    func fetchTransactionData(pagination: Bool) -> [TransactionModel]
 }

@@ -8,6 +8,6 @@
 import Foundation
 
 protocol AddMoneyViewOutput: AnyObject {
-    func returnToMainScreen()
+    func submit()
     func getAmountOfMoney(amount: String?)
 }

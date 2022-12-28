@@ -15,9 +15,11 @@ final class MainScreenPresenter {
     
     private let output: MainScreenModuleOutput
     private let networkService: NetworkServiceProtocol
-    private let dataBaseService: DataBaseProtocol
+    private let dataBaseService: MainScreenRequestsProtocol
     
-    init(output: MainScreenModuleOutput, networkService: NetworkServiceProtocol, dataBaseService: DataBaseProtocol) {
+    private var array = [TransactionModel]()
+    
+    init(output: MainScreenModuleOutput, networkService: NetworkServiceProtocol, dataBaseService: MainScreenRequestsProtocol) {
         self.networkService = networkService
         self.dataBaseService = dataBaseService
         self.output = output
@@ -31,5 +33,20 @@ extension MainScreenPresenter: MainScreenViewOutput {
     
     func showAddMoneyScreen() {
         output.showAddMoneyModule()
+    }
+    
+    func fetchTransactionData(pagination: Bool) -> [TransactionModel] {
+        guard !dataBaseService.isPaginating else {
+            return [TransactionModel]()
+        }
+        dataBaseService.fetchData(pagination: pagination) { result in
+            switch result {
+            case .success(let array):
+                self.array = array
+            case .failure(let error):
+                print(error)
+            }
+        }
+        return array
     }
 }

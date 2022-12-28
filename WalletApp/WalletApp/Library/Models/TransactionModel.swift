@@ -10,5 +10,5 @@ import Foundation
 struct TransactionModel {
     let date: Date
     let amount: Double
-    let transactionType: TransactionType
+    let transactionType: String
 }

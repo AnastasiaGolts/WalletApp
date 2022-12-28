@@ -26,6 +26,8 @@ final class MainScreenViewController: UIViewController {
     private let stackViewHeight = Constants.screenHeight * 0.75
     private let stackViewSideConstant = (Constants.screenWidth / 2) + 10
     
+    private var arrayOfTransactions = [TransactionModel]()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -33,6 +35,8 @@ final class MainScreenViewController: UIViewController {
         
         title = "WalletApp"
         view.backgroundColor = .white
+        
+        arrayOfTransactions = output?.fetchTransactionData(pagination: false) ?? [TransactionModel]()
         
         setUpAppearance()
     }
@@ -152,7 +156,7 @@ private extension MainScreenViewController {
 
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return arrayOfTransactions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -160,14 +164,26 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let tempModel = TransactionModel(date: Date(), amount: 500, transactionType: .groceries)
-        
-        cell.setUpCell(transactionModel: tempModel)
+        cell.setUpCell(transactionModel: arrayOfTransactions[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
+    }
+}
+
+// MARK: - UIScriollViewDelegate
+
+extension MainScreenViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            arrayOfTransactions.append(contentsOf: output?.fetchTransactionData(pagination: true) ?? [TransactionModel]())
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
     }
 }
