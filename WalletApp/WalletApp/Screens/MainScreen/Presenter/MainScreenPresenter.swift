@@ -76,8 +76,8 @@ extension MainScreenPresenter: MainScreenViewOutput {
         guard let value = UserDefaults.standard.getValueForBalance() else {
             return ""
         }
-        let string = String(format: "%.2f", value)
-        return "Balance: " + string
+        let string = String(format: Constants.doubleFormat, value)
+        return L10n.MainScreen.balance + string
     }
     
     func getBitcoinPrice() async -> String {
@@ -89,7 +89,7 @@ extension MainScreenPresenter: MainScreenViewOutput {
         if shouldUpdate  {
             do {
                 let floatPrice = try await networkService.fetchBitcoinPrice()
-                price = String(format: "%.1f", floatPrice)
+                price = String(format: Constants.doubleFormat, floatPrice)
             } catch {
                 
             }
@@ -97,10 +97,10 @@ extension MainScreenPresenter: MainScreenViewOutput {
             guard let value = UserDefaults.standard.getValueForBalance() else {
                 return String()
             }
-            price = String(format: "%.1f", value)
+            price = String(format: Constants.doubleFormat, value)
         }
         
-        return "Bitcoin: " + price + "$"
+        return L10n.MainScreen.bitcoin + price + "$"
     }
 
 }

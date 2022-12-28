@@ -43,7 +43,7 @@ extension AddMoneyPresenter: AddMoneyViewOutput {
         let transactionModel = TransactionModel(dayOfTransaction: WalletAppDateFormatter.setDateTime().date,
                                                 timeOfTransaction: WalletAppDateFormatter.setDateTime().time,
                                                 amount: amount,
-                                                transactionType: "Added money")
+                                                transactionType: L10n.General.addedMoneyTransactionType)
         dataBase.addTransaction(transactionModel: transactionModel)
         output.returnToMain()
     }

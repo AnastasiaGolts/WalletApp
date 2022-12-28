@@ -18,17 +18,17 @@ enum TransactionType: CaseIterable {
     var title: String {
         switch self {
         case .notChosen:
-            return "Not chosen"
+            return L10n.TransactionType.notChosen
         case .groceries:
-            return "Groceries"
+            return L10n.TransactionType.groceries
         case .taxi:
-            return "Taxi"
+            return L10n.TransactionType.taxi
         case .restaurants:
-            return "Restaurants"
+            return L10n.TransactionType.restaurants
         case .electronics:
-            return "Electronics"
+            return L10n.TransactionType.electronics
         case .other:
-            return "Other"
+            return L10n.TransactionType.other
         }
     }
 }

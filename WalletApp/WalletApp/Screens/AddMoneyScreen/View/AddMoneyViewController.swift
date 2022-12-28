@@ -48,13 +48,13 @@ private extension AddMoneyViewController {
     
     func setUpTextField() {
         textField.delegate = self
-        textField.placeholder = "Type here"
+        textField.placeholder = L10n.AddMoneyScreen.placeholder
         textField.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         textField.addTarget(self, action: #selector(getValue(_:)), for: .editingChanged)
     }
     
     func setUpButton() {
-        button.setTitle("Add money", for: .normal)
+        button.setTitle(L10n.General.addButtonTitle, for: .normal)
         button.addTarget(self, action: #selector(submit), for: .touchUpInside)
     }
     

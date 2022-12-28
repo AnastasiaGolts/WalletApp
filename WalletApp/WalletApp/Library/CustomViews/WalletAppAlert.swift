@@ -14,7 +14,7 @@ final class WalletAppAlert: UIAlertController {
         let alert = UIAlertController(title: strings.title,
                                       message: strings.message,
                                       preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default)
+        let action = UIAlertAction(title: L10n.Alert.Action.ok, style: .default)
         alert.addAction(action)
         viewController.present(alert, animated: true)
     }
@@ -24,11 +24,11 @@ private extension WalletAppAlert {
     static func getMessageTitle(type: WalletAlertType) -> (title: String, message: String) {
         switch type {
         case .emptyAmount:
-            return ("How much did you spend?", "Please specify amount of spent money")
+            return (L10n.Alert.EmptyAmount.title, L10n.Alert.EmptyAmount.message)
         case .emptyTransactionType:
-            return ("What did you spent your money on?", "Please choose category")
+            return (L10n.Alert.EmptyTransactionType.title, L10n.Alert.EmptyTransactionType.message)
         case .emptyAdd:
-            return ("How much do you want to add?", "Please specify amount of money")
+            return (L10n.Alert.EmptyAdd.title, L10n.Alert.EmptyAdd.message)
         }
     }
 }

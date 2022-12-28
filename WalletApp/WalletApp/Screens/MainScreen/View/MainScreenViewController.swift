@@ -33,7 +33,7 @@ final class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "WalletApp"
+        title = L10n.General.walletApp
         view.backgroundColor = .white
         
         setUpAppearance()
@@ -92,7 +92,7 @@ private extension MainScreenViewController {
     // MARK: - Set Up BalanceStackView
     
     func setUpBalanceButton() {
-        balanceButton.setTitle("Add money", for: .normal)
+        balanceButton.setTitle(L10n.General.addButtonTitle, for: .normal)
         balanceButton.addTarget(self, action: #selector(showAddMoneyScreen), for: .touchUpInside)
     }
     
@@ -118,7 +118,7 @@ private extension MainScreenViewController {
     // MARK: - Set Up BitcoinTransactionStackView
     
     func setUpBitcoinTransactionButton() {
-        bitcoinTransactionButton.setTitle("Add transaction", for: .normal)
+        bitcoinTransactionButton.setTitle(L10n.General.addTransactionButtonTitle, for: .normal)
         bitcoinTransactionButton.addTarget(self, action: #selector(showTransactionScreen), for: .touchUpInside)
     }
     

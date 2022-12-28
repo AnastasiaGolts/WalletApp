@@ -12,7 +12,7 @@ final class CoreDataService: DataBaseProtocol, MainScreenRequestsProtocol, AddTr
     
     // MARK: - Properties
     
-    lazy var coreDataStack = CoreDataStack(modelName: "WalletApp")
+    lazy var coreDataStack = CoreDataStack(modelName: L10n.General.walletApp)
     
     lazy var fetchedResultsController: NSFetchedResultsController<Transaction> = {
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
@@ -26,7 +26,7 @@ final class CoreDataService: DataBaseProtocol, MainScreenRequestsProtocol, AddTr
           fetchRequest: fetchRequest,
           managedObjectContext: coreDataStack.managedContext,
           sectionNameKeyPath: #keyPath(Transaction.dayOfTransaction),
-          cacheName: "walletApp")
+          cacheName: Constants.cacheName)
         
         return fetchedResultsController
     } ()

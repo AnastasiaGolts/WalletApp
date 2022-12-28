@@ -57,7 +57,7 @@ private extension WalletAppTextField {
         toolbar.barStyle = .default
         toolbar.items = [
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
+            UIBarButtonItem(title: L10n.WalletAppTextField.doneButtonTitle, style: .done, target: onDone.target, action: onDone.action)
         ]
         toolbar.sizeToFit()
 

@@ -55,7 +55,7 @@ private extension TransactionScreenViewController {
     
     func setUpTextField() {
         textField.delegate = self
-        textField.placeholder = "Spent amount of money"
+        textField.placeholder = L10n.TransactionScreen.placeholder
         textField.addTarget(self, action: #selector(getValue(_:)), for: .editingChanged)
     }
     
@@ -65,7 +65,7 @@ private extension TransactionScreenViewController {
     }
     
     func setUpAddButton() {
-        addButton.setTitle("Add transaction", for: .normal)
+        addButton.setTitle(L10n.General.addTransactionButtonTitle, for: .normal)
         addButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
     }
     

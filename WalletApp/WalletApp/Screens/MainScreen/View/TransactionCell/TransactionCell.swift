@@ -9,7 +9,7 @@ import UIKit
 
 final class TransactionCell: UITableViewCell {
     
-    static let identifier = "transactionCellIdentifier"
+    static let identifier = L10n.MainScreen.transactionCellIdentifier
     
     // MARK: - Properties
     
@@ -37,7 +37,7 @@ final class TransactionCell: UITableViewCell {
         let date = transactionModel.timeOfTransaction.dropLast(3)
         let amount = transactionModel.amount
         
-        if transactionModel.transactionType == "Added money" {
+        if transactionModel.transactionType == L10n.General.addedMoneyTransactionType {
             amountLabel.text = "+\(amount)$"
             amountLabel.textColor = .red
         } else {

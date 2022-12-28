@@ -5,3 +5,49 @@
   Created by Anastasia Golts on 27.12.2022.
   
 */
+
+// MARK: - General
+
+"General.WalletApp" = "WalletApp";
+"General.AddedMoneyTransactionType" = "Added money";
+"General.AddButtonTitle" = "Add money";
+"General.AddTransactionButtonTitle" = "Add transaction";
+
+// MARK: - AddMoneyScreen
+
+"AddMoneyScreen.Placeholder" = "Type here";
+
+// MARK: - MainScreen
+
+"MainScreen.TransactionCellIdentifier" = "transactionCellIdentifier";
+"MainScreen.Bitcoin" = "Bitcoin: ";
+"MainScreen.Balance" = "Balance: ";
+
+// MARK: - TransactionScreen
+
+"TransactionScreen.Placeholder" = "Spent amount of money";
+
+// MARK: - WalletAppAlert
+
+"Alert.Action.Ok" = "Ok";
+"Alert.EmptyAmount.Title" = "How much did you spend?";
+"Alert.EmptyAmount.Message" = "Please specify amount of spent money";
+"Alert.EmptyTransactionType.Title" = "What did you spent your money on?";
+"Alert.EmptyTransactionType.Message" = "Please choose category";
+"Alert.EmptyAdd.Title" = "How much do you want to add?";
+"Alert.EmptyAdd.Message" = "Please specify amount of money";
+
+// MARK: - WalletAppTextField
+
+"WalletAppTextField.DoneButtonTitle" = "Done";
+
+// MARK: - TransactionType
+
+"TransactionType.NotChosen" = "Not chosen";
+"TransactionType.Groceries" = "Groceries";
+"TransactionType.Taxi" = "Taxi";
+"TransactionType.Restaurants" = "Restaurants";
+"TransactionType.Electronics" = "Electronics";
+"TransactionType.Other" = "Other";
+
+

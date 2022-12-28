@@ -12,42 +12,42 @@ extension UserDefaults {
     // MARK: - Balance
     
     func setValueForBalance(value: Double) {
-        UserDefaults.standard.setValue(value, forKey: "Balance")
+        UserDefaults.standard.setValue(value, forKey: Constants.usertDefaultsKeyBalance)
         UserDefaults.standard.synchronize()
     }
     
     func getValueForBalance() -> Double? {
-        return UserDefaults.standard.value(forKey: "Balance") as? Double
+        return UserDefaults.standard.value(forKey: Constants.usertDefaultsKeyBalance) as? Double
     }
     
     // MARK: - Populate DataBase
     
     func markAsVisited(value: Bool) {
-        UserDefaults.standard.setValue(value, forKey: "IsVisited")
+        UserDefaults.standard.setValue(value, forKey: Constants.usertDefaultsKeyIsVisited)
         UserDefaults.standard.synchronize()
     }
     
     func isFirstVisit() -> Bool? {
-        return UserDefaults.standard.value(forKey: "IsVisited") as? Bool
+        return UserDefaults.standard.value(forKey: Constants.usertDefaultsKeyIsVisited) as? Bool
     }
     
     // MARK: - Bitcoin
     
     func setTimeOfLastVisit(date: Date) {
-        UserDefaults.standard.setValue(date, forKey: "DateOfVisit")
+        UserDefaults.standard.setValue(date, forKey: Constants.usertDefaultsKeyDateOfVisit)
         UserDefaults.standard.synchronize()
     }
     
     func getTimeOfLastVisit() -> Date? {
-        return UserDefaults.standard.value(forKey: "DateOfVisit") as? Date
+        return UserDefaults.standard.value(forKey: Constants.usertDefaultsKeyDateOfVisit) as? Date
     }
     
     func setValueShouldUpdateBitcoin(value: Bool) {
-        UserDefaults.standard.setValue(value, forKey: "ShouldUpdate")
+        UserDefaults.standard.setValue(value, forKey: Constants.usertDefaultsKeyShouldUpdate)
         UserDefaults.standard.synchronize()
     }
     
     func getValueShouldUpdateBitcoin() -> Bool? {
-        return UserDefaults.standard.value(forKey: "ShouldUpdate") as? Bool
+        return UserDefaults.standard.value(forKey: Constants.usertDefaultsKeyShouldUpdate) as? Bool
     }
 }
