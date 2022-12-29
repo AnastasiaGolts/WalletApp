@@ -82,22 +82,11 @@ extension MainScreenPresenter: MainScreenViewOutput {
     
     func getBitcoinPrice() async -> String {
         
-        guard let shouldUpdate = UserDefaults.standard.getValueShouldUpdateBitcoin() else {
-            return String()
-        }
-
-        if shouldUpdate  {
-            do {
-                let floatPrice = try await networkService.fetchBitcoinPrice()
-                price = String(format: Constants.doubleFormat, floatPrice)
-            } catch {
-                
-            }
-        } else {
-            guard let value = UserDefaults.standard.getValueForBalance() else {
-                return String()
-            }
-            price = String(format: Constants.doubleFormat, value)
+        do {
+            let floatPrice = try await networkService.fetchBitcoinPrice()
+            price = String(format: Constants.doubleFormat, floatPrice)
+        } catch {
+            
         }
         
         return L10n.MainScreen.bitcoin + price + "$"

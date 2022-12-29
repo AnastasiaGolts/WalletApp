@@ -17,7 +17,7 @@ final class WalletAppDateFormatter {
         dateFormatter.dateFormat = "dd.MM.yy"
         let dateString = dateFormatter.string(from: date)
         
-        dateFormatter.dateFormat = "hh:mm:ss"
+        dateFormatter.dateFormat = "HH:mm:ss"
         let timeString = dateFormatter.string(from: date)
         
         return(dateString, timeString)

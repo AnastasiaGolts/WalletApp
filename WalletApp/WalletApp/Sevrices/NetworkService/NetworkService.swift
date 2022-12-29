@@ -13,8 +13,16 @@ final class NetworkService: NetworkServiceProtocol {
         guard let url = URL(string: "https://api.coindesk.com/v1/bpi/currentprice.json") else {
             return Float()
         }
+        
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
+        
+        if let shouldUpdate = UserDefaults.standard.getValueShouldUpdateBitcoin() {
+            if !shouldUpdate {
+                request = URLRequest(url: url, cachePolicy: .returnCacheDataDontLoad)
+            }
+        }
     
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
         
         let decodedData = try JSONDecoder().decode(BitcoinRequestModel.self, from: data)
         

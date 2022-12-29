@@ -77,16 +77,6 @@ internal enum L10n {
     /// Taxi
     internal static let taxi = L10n.tr("Localizable", "TransactionType.Taxi", fallback: "Taxi")
   }
-  internal enum UserDefaults {
-    /// Balance
-    internal static let balanceKey = L10n.tr("Localizable", "UserDefaults.BalanceKey", fallback: "Balance")
-    /// DateOfVisit
-    internal static let dateOfVisitKey = L10n.tr("Localizable", "UserDefaults.DateOfVisitKey", fallback: "DateOfVisit")
-    /// IsVisited
-    internal static let isVisitedKey = L10n.tr("Localizable", "UserDefaults.IsVisitedKey", fallback: "IsVisited")
-    /// ShouldUpdate
-    internal static let shouldUpdateKey = L10n.tr("Localizable", "UserDefaults.ShouldUpdateKey", fallback: "ShouldUpdate")
-  }
   internal enum WalletAppTextField {
     /// Done
     internal static let doneButtonTitle = L10n.tr("Localizable", "WalletAppTextField.DoneButtonTitle", fallback: "Done")
