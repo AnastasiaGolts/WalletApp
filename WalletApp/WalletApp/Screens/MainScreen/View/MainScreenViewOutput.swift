@@ -10,7 +10,7 @@ import Foundation
 protocol MainScreenViewOutput: AnyObject {
     func showTransactionScreen()
     func showAddMoneyScreen()
-    func fetchTransactionData() -> [TransactionModel]
+    func fetchTransactionData()
     func getNumberOfSections() -> Int
     func getNumberOfRowsInSection(section: Int) -> Int
     func getCellInfo(indexPath: IndexPath) -> TransactionModel

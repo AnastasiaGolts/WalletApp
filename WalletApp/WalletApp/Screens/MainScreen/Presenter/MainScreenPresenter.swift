@@ -15,16 +15,17 @@ final class MainScreenPresenter {
     
     private let output: MainScreenModuleOutput
     private let networkService: NetworkServiceProtocol
-    private let dataBaseService: MainScreenRequestsProtocol
-    
-    private var array = [TransactionModel]()
+    var dataBaseService: MainScreenRequestsProtocol?
     
     private var price = String()
     
-    init(output: MainScreenModuleOutput, networkService: NetworkServiceProtocol, dataBaseService: MainScreenRequestsProtocol) {
+    init(output: MainScreenModuleOutput, networkService: NetworkServiceProtocol) {
         self.networkService = networkService
-        self.dataBaseService = dataBaseService
         self.output = output
+    }
+    
+    func didChangeContent() {
+        view?.didChangeContent()
     }
 }
 
@@ -39,35 +40,30 @@ extension MainScreenPresenter: MainScreenViewOutput {
         output.showAddMoneyModule()
     }
     
-    func fetchTransactionData() -> [TransactionModel] {
-
-        dataBaseService.fetchData { result in
-            switch result {
-            case .success(let array):
-                self.array = array
-            case .failure(let error):
-                print(error)
-            }
-        }
-        return array
+    func fetchTransactionData() {
+        dataBaseService?.fetchData()
     }
     
     // MARK: - TableViewData
     
     func getNumberOfSections() -> Int {
-        return dataBaseService.getNumberOfSections()
+        return dataBaseService?.getNumberOfSections() ?? 0
     }
     
     func getNumberOfRowsInSection(section: Int) -> Int {
-        return dataBaseService.getNumberOfRowsInSection(section: section)
+        return dataBaseService?.getNumberOfRowsInSection(section: section) ?? 0
     }
     
     func getCellInfo(indexPath: IndexPath) -> TransactionModel {
-        return dataBaseService.getCellInfo(indexPath: indexPath)
+        let emptyModel = TransactionModel(dayOfTransaction: "",
+                                          timeOfTransaction: "",
+                                          amount: 0.0,
+                                          transactionType: "")
+        return dataBaseService?.getCellInfo(indexPath: indexPath) ?? emptyModel
     }
     
     func getSectionName(section: Int) -> String {
-        return dataBaseService.getSectionName(section: section)
+        return dataBaseService?.getSectionName(section: section) ?? ""
     }
     
     // MARK: - Labels Data

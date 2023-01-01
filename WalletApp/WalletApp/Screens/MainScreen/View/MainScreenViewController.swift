@@ -26,8 +26,6 @@ final class MainScreenViewController: UIViewController {
     private let stackViewHeight = Constants.screenHeight * 0.75
     private let stackViewSideConstant = (Constants.screenWidth / 2) + 7
     
-    private var arrayOfTransactions = [TransactionModel]()
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -37,15 +35,13 @@ final class MainScreenViewController: UIViewController {
         view.backgroundColor = .white
         
         setUpAppearance()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchAllData()
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 
 }
@@ -53,7 +49,11 @@ final class MainScreenViewController: UIViewController {
 // MARK: - MainScreenViewInput
 
 extension MainScreenViewController: MainScreenViewInput {
-    
+    func didChangeContent() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
 }
 
 private extension MainScreenViewController {
@@ -61,11 +61,7 @@ private extension MainScreenViewController {
     // MARK: - Set Up Appearance
     
     func fetchAllData() {
-        arrayOfTransactions = output?.fetchTransactionData() ?? [TransactionModel]()
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
+        output?.fetchTransactionData()
         
         guard let balanceInfo = output?.getBalanceInfo() else {
             return

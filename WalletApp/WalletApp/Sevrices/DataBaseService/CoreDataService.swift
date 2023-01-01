@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class CoreDataService: DataBaseProtocol, MainScreenRequestsProtocol, AddTransactionProtocol {
+final class CoreDataService: NSObject, DataBaseProtocol, MainScreenRequestsProtocol, AddTransactionProtocol {
     
     // MARK: - Properties
     
@@ -28,41 +28,21 @@ final class CoreDataService: DataBaseProtocol, MainScreenRequestsProtocol, AddTr
           sectionNameKeyPath: #keyPath(Transaction.dayOfTransaction),
           cacheName: Constants.cacheName)
         
+        fetchedResultsController.delegate = self
         return fetchedResultsController
     } ()
+    
+    var didChangeContent: (() -> Void)?
     
     
     // MARK: - MainScreenRequestsProtocol
     
-    func fetchData(completion: @escaping (Result<[TransactionModel], Error>) -> Void) {
-        var array = [Transaction]()
-        var arrayOfModels = [TransactionModel]()
-        
+    func fetchData() {
         do {
             try fetchedResultsController.performFetch()
-            guard let fetchedObjects = fetchedResultsController.fetchedObjects else {
-                return
-            }
-            array = fetchedObjects
         } catch {
             print(error.localizedDescription)
         }
-        
-        array.forEach {
-            guard let type = $0.type,
-                  let day = $0.dayOfTransaction,
-                  let time = $0.timeOfTransaction else {
-                return
-            }
-
-            let model = TransactionModel(dayOfTransaction: day,
-                                         timeOfTransaction: time,
-                                         amount: $0.amount,
-                                         transactionType: type)
-            arrayOfModels.append(model)
-        }
-        
-        completion(.success(arrayOfModels))
     }
     
     func getNumberOfSections() -> Int {
@@ -101,5 +81,13 @@ final class CoreDataService: DataBaseProtocol, MainScreenRequestsProtocol, AddTr
         transaction.dayOfTransaction = transactionModel.dayOfTransaction
         transaction.timeOfTransaction = transactionModel.timeOfTransaction
         coreDataStack.saveContext()
+    }
+}
+
+// MARK: -
+
+extension CoreDataService: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        didChangeContent?()
     }
 }

@@ -12,9 +12,14 @@ final class MainFlowFactory: MainFlowFactoryProtocol {
     func showMainScreen(moduleOutput: MainScreenModuleOutput,
                         networkService: NetworkServiceProtocol,
                         dataBaseService: MainScreenRequestsProtocol) -> MainScreenViewController {
-        let presenter = MainScreenPresenter(output: moduleOutput, networkService: networkService, dataBaseService: dataBaseService)
+        let presenter = MainScreenPresenter(output: moduleOutput, networkService: networkService)
         let viewController = MainScreenViewController()
         
+        dataBaseService.didChangeContent = {
+            presenter.didChangeContent()
+        }
+        
+        presenter.dataBaseService = dataBaseService
         presenter.view = viewController
         viewController.output = presenter
         
