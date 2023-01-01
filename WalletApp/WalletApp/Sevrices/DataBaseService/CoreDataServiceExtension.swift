@@ -62,7 +62,8 @@ private extension CoreDataService {
         (2...4).forEach {
             let date = Calendar.current.date(byAdding: .day, value: -numberOfDays.2, to: Date())
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yy"
+            dateFormatter.locale = Locale(identifier: "en")
+            dateFormatter.dateFormat = "yyyy, MMM d"
             
             guard let date = date else {
                 return
@@ -78,7 +79,8 @@ private extension CoreDataService {
         (2...5).forEach {
             let date = Calendar.current.date(byAdding: .day, value: -numberOfDays.1, to: Date())
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yy"
+            dateFormatter.locale = Locale(identifier: "en")
+            dateFormatter.dateFormat = "yyyy, MMM d"
             
             guard let date = date else {
                 return
@@ -94,7 +96,8 @@ private extension CoreDataService {
         (1...3).forEach {
             let date = Calendar.current.date(byAdding: .day, value: -numberOfDays.0, to: Date())
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yy"
+            dateFormatter.locale = Locale(identifier: "en")
+            dateFormatter.dateFormat = "yyyy, MMM d"
             
             guard let date = date else {
                 return

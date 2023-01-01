@@ -13,8 +13,9 @@ final class WalletAppDateFormatter {
     static func setDateTime() -> DateType {
         let date = Date()
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en")
         
-        dateFormatter.dateFormat = "dd.MM.yy"
+        dateFormatter.dateFormat = "yyyy, MMM d"
         let dateString = dateFormatter.string(from: date)
         
         dateFormatter.dateFormat = "HH:mm:ss"
